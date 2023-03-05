@@ -14,7 +14,7 @@ app.component('product-display', {
           </div>
           <div class="product-info">
             <h1>{{ title }}</h1>
-            <p v-if="inStock">In Stocks</p>
+            <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
                 <p>Shipping: {{ shipping }}</p>
             <ul>
@@ -48,7 +48,8 @@ app.component('product-display', {
         methods: {
             addToCart(){
                 //this.cart += 1
-                this.$emit('add-to-cart')
+                this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
+                console.log(this.variants[this.selectedVariant].id)
             },
             substractFromCart(){
                 this.cart -= 1
