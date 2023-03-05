@@ -24,7 +24,7 @@ app.component('product-display', {
             <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" :style="{backgroundColor: variant.color}"></div>
 
             <button class="button" @click="addToCart"  :disabled="!inStock"  :class="{disabledButton: !inStock}">Add to Cart</button>
-
+            <button class="button"  @click="deleteFromCart" :disabled="!inStock" :class="{disabledButton: !inStock}">Delete From Cart</button>
           </div>
 
           <a :href="url">Code Mastery</a>
@@ -50,6 +50,9 @@ app.component('product-display', {
                 //this.cart += 1
                 this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
                 console.log(this.variants[this.selectedVariant].id)
+            },
+            deleteFromCart(){
+                this.$emit('delete-from-cart', this.variants[this.selectedVariant].id)
             },
             substractFromCart(){
                 this.cart -= 1
