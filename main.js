@@ -6,5 +6,9 @@ const app = Vue.createApp({
             details: ['azul', 'puma']
         }
     },
-    methods: {}
+    methods: {
+        updateCart(){
+            this.cart +=1
+        }
+    }
 })
